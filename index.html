@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="index,follow">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; connect-src 'none'; img-src 'none'; font-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; worker-src 'none'; manifest-src 'none'; base-uri 'none'; form-action 'none'">
+  <link rel="canonical" href="https://tatyanazaiceva76.github.io/raspisanie-urokov-word/">
+  <title>Расписание уроков в Word — заполнить и скачать DOCX</title>
+  <meta name="description" content="Заполните расписание уроков на 5 или 6 дней и скачайте редактируемую таблицу Word. Пустой шаблон или готовый DOCX, форматы A4 и Letter, без регистрации.">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+<main>
+  <header>
+    <p class="eyebrow">Заполненная таблица, а не картинка</p>
+    <h1>Расписание уроков в Word</h1>
+    <p class="lead">Введите предметы по дням и скачайте уже заполненный файл DOCX: названия останутся редактируемыми в Word. Можно оставить ячейки пустыми и получить шаблон для заполнения позже. Это не автоматическое составление расписания школы.</p>
+  </header>
+
+  <noscript><p>Для заполнения таблицы и создания DOCX нужен JavaScript. Включите его в браузере, затем перезагрузите страницу.</p></noscript>
+
+  <form id="planner" novalidate>
+    <section aria-labelledby="settings-heading">
+      <h2 id="settings-heading">Параметры</h2>
+      <div class="settings">
+        <label>Заголовок, необязательно
+          <input id="title" type="text" maxlength="160" autocomplete="off" placeholder="Например: Расписание уроков">
+        </label>
+        <label>Учебных дней
+          <select id="days"><option value="5" selected>5</option><option value="6">6</option></select>
+        </label>
+        <label>Уроков в день
+          <select id="periods"><option value="4">4</option><option value="6" selected>6</option><option value="8">8</option></select>
+        </label>
+        <label>Бумага
+          <select id="paper"><option value="letterPortrait" selected>Letter, книжная</option><option value="a4Portrait">A4, книжная</option><option value="a4Landscape">A4, альбомная</option></select>
+        </label>
+      </div>
+    </section>
+
+    <section aria-labelledby="subjects-heading">
+      <div class="section-heading"><div><h2 id="subjects-heading">Предметы</h2><p>Одна ячейка — до 60 символов. Пустые ячейки сохраняют свои места.</p></div><button id="demo" type="button" class="secondary">Пример</button></div>
+      <div id="grid" class="table-scroll"></div>
+    </section>
+
+    <div id="errors" class="errors" role="alert" tabindex="-1"></div>
+    <div class="actions">
+      <button id="build" type="submit" disabled>Собрать DOCX</button>
+      <button id="reset" type="button" class="secondary">Очистить</button>
+    </div>
+  </form>
+
+  <section id="result" hidden aria-labelledby="result-heading">
+    <div class="section-heading"><div><h2 id="result-heading">Готовый результат</h2><p>Предпросмотр соответствует подтверждённой модели. Изменение любого поля отменяет этот результат.</p></div><a id="download" class="button" aria-disabled="true">Скачать DOCX</a></div>
+    <div id="preview" class="preview"></div>
+  </section>
+
+  <section aria-labelledby="method-heading" class="method">
+    <h2 id="method-heading">Что получится</h2>
+    <p>Файл содержит одну редактируемую таблицу: компактный столбец номера урока и одинаковые столбцы дней недели. Кириллица, запятые, кавычки и специальные XML-символы сохраняются как текст. В документ не добавляются изображения, макросы, внешние ссылки или шрифты.</p>
+    <p><strong>Печать.</strong> Формат бумаги записывается в документ, но Word и другие редакторы могут по-разному переносить длинные названия. Откройте файл, проверьте все страницы и настройки принтера. Одностраничная печать и точное совпадение между редакторами не обещаются.</p>
+    <p><strong>Приватность.</strong> Приложение обрабатывает предметы в этой вкладке: не отправляет введённые значения на сервер и не записывает их в cookies или хранилище браузера. При нажатии «Скачать DOCX» вы сами сохраняете файл с этими данными на своём устройстве. Здесь нет загрузки документов, регистрации и аналитики. Само открытие страницы и её файлов остаётся обычным обращением к сайту. Хостинг GitHub Pages ведёт журналы безопасности, включая IP-адреса; <a href="https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages#data-collection">подробнее у GitHub</a>.</p>
+  </section>
+  <section aria-labelledby="questions-heading" class="method">
+    <h2 id="questions-heading">Как сделать расписание уроков в Word</h2>
+    <h3>Как скачать пустой шаблон?</h3>
+    <p>Выберите 5 или 6 учебных дней и 4, 6 или 8 строк уроков. Оставьте предметы пустыми, нажмите «Собрать DOCX», затем «Скачать DOCX». Пустые клетки останутся на своих местах.</p>
+    <h3>Чем DOCX отличается от PDF и картинки?</h3>
+    <p>Здесь скачивается настоящая таблица с текстом, который можно менять в редакторе Word. Названия не превращаются в изображение. В этом инструменте нет экспорта PDF или PNG; при необходимости сохраните другой формат из своего редактора.</p>
+    <h3>Как подготовить лист A4 к печати?</h3>
+    <p>Выберите «A4, книжная» или «A4, альбомная» до сборки. Откройте скачанный файл в своём редакторе и проверьте разбиение на страницы. Длинные названия могут переноситься; совпадение печати в разных редакторах не гарантируется.</p>
+    <h3>Почему после изменения исчезла ссылка на скачивание?</h3>
+    <p>Ссылка относится только к последней собранной таблице. После правки снова нажмите «Собрать DOCX», чтобы не скачать устаревший вариант. Кнопка «Очистить» удаляет предметы из формы, но не удаляет ранее скачанные файлы.</p>
+  </section>
+</main>
+<script type="module" src="./app.mjs"></script>
+</body>
+</html>

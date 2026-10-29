@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /raspisanie-urokov-word/
+
+Sitemap: https://tatyanazaiceva76.github.io/raspisanie-urokov-word/sitemap.xml
